@@ -1,16 +1,17 @@
-# packages
+# importing packages
 import pickle
 from trainmodel import keys
 import pandas as pd
 
 
-# importing trained model
+# importing trained models
 filename = 'finalized_model1.sav'
 lrc = pickle.load(open(filename, 'rb'))
 filename = 'finalized_model2.sav'
 dtc = pickle.load(open(filename, 'rb'))
 
 
+# function to replace 'NaN' values with 'Other'
 def removeNan(d):
     lk=[i for i in d]
     for i in d.keys():

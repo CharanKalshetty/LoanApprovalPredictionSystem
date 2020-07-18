@@ -85,18 +85,18 @@ x2_train, x2_test, y2_train, y2_test = train_test_split(X2, Y, test_size=0.3, ra
 
 
 '''  Traiing model   '''
-# defining classifier model
+# defining classifier models
 dtc = tree.DecisionTreeClassifier()
 lrc=LogisticRegression()
 
 
-# fitting classifier with x_train as input and y_train as output
+# fitting classifiers with x_train as input and y_train as output
 lrc= lrc.fit(x1_train, y1_train)
 dtc= dtc.fit(x2_train, y2_train)
 
 
 '''  testing accuracy of model   '''
-# storing model's output in y_pred
+# storing model's output
 y1_pred = lrc.predict(x1_test)
 y2_pred = dtc.predict(x2_test)
 Y1_pred = lrc.predict(X1)
@@ -179,14 +179,14 @@ X1, X2 = preprocessInput(df)
 
 
 ''' Predicting output '''
-# storing model's output in y_pred
+# storing model's output
 y1_pred = lrc.predict(X1)
 y2_pred = dtc.predict(X2)
 y_pred=[]
 for i in range(0,len(y1_pred)):
    y_pred.append(y1_pred[i] or y2_pred[i])
 
-
+# preparing DataFrame with both input and output
 d=keys["Loan_Status"]
 ''' Exporting data with Loan_Status column '''
 cdf.dropna(subset=['LoanAmount','Loan_Amount_Term'], inplace=True)
